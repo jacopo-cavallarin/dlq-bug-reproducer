@@ -1,15 +1,17 @@
 version: '2'
 services:
   kafka:
-    image: confluentinc/confluent-local:latest
+    image: confluentinc/cp-kafka:latest
     ports:
       - "9092:9092"
+      - "9997:9997"
     environment:
-      KAFKA_ADVERTISED_LISTENER_NAMES: SASL_PLAINTEXT
+      CLUSTER_ID: 4L6g3nShT-eMCtK--X86sw
       KAFKA_BROKER_ID: 1
       KAFKA_LISTENER_SECURITY_PROTOCOL_MAP: 'CONTROLLER:PLAINTEXT,SASL_PLAINTEXT:SASL_PLAINTEXT,SASL_HOST:SASL_PLAINTEXT'
       KAFKA_ADVERTISED_LISTENERS: 'SASL_PLAINTEXT://kafka:29092,SASL_HOST://localhost:9092'
       KAFKA_OPTS: "-Djava.security.auth.login.config=/etc/kafka/kafka_server_jaas.conf"
+      KAFKA_OFFSETS_TOPIC_REPLICATION_FACTOR: 1
       KAFKA_GROUP_INITIAL_REBALANCE_DELAY_MS: 0
       KAFKA_TRANSACTION_STATE_LOG_MIN_ISR: 1
       KAFKA_TRANSACTION_STATE_LOG_REPLICATION_FACTOR: 1
