@@ -20,10 +20,10 @@ public class TestConsumer {
         var payload = message.getPayload();
 
         if (payload.shouldAck()) {
-            log.info(() -> "acking message %s".formatted(message));
+            log.info(() -> "acking message %s".formatted(payload));
             return message.ack();
         } else {
-            log.severe(() -> "nacking message %s".formatted(message));
+            log.severe(() -> "nacking message %s".formatted(payload));
             return message.nack(new IllegalArgumentException("shouldAck was false"));
         }
     }

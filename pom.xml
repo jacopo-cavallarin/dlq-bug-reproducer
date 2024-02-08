@@ -23,18 +23,6 @@
     <quarkus.platform.artifact-id>quarkus-bom</quarkus.platform.artifact-id>
     <quarkus.platform.group-id>io.quarkus.platform</quarkus.platform.group-id>
     <quarkus.platform.version>3.7.2</quarkus.platform.version>
-    <maven-resources-plugin.version>3.3.1</maven-resources-plugin.version>
-
-    <!-- Confluent kafka bootstrap server -->
-    <kafka.bootstrap.server>TODO</kafka.bootstrap.server>
-    <!-- name of the topic the app will consume from -->
-    <topic.name>test-quarkus-bug</topic.name>
-    <!-- name of the dead letter queue topic associated to topic.name -->
-    <dlq.topic.name>test-quarkus-bug-dlq</dlq.topic.name>
-    <!-- fill with your Confluent API Key -->
-    <confluent.api.key>TODO</confluent.api.key>
-    <!-- fill with your Confluent API Secret -->
-    <confluent.api.secret>TODO</confluent.api.secret>
   </properties>
 
   <dependencyManagement>
@@ -61,21 +49,7 @@
   </dependencies>
 
   <build>
-    <resources>
-      <resource>
-        <directory>src/main/resources</directory>
-        <filtering>true</filtering>
-      </resource>
-    </resources>
     <plugins>
-      <plugin>
-        <groupId>org.apache.maven.plugins</groupId>
-        <artifactId>maven-resources-plugin</artifactId>
-        <version>${maven-resources-plugin.version}</version>
-        <configuration>
-          <propertiesEncoding>ISO-8859-1</propertiesEncoding>
-        </configuration>
-      </plugin>
       <plugin>
         <groupId>${quarkus.platform.group-id}</groupId>
         <artifactId>quarkus-maven-plugin</artifactId>
